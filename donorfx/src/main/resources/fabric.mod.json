@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "donorfx",
+  "version": "${version}",
+  "name": "Donor FX",
+  "description": "Crazy animations when someone pays you, a donor leaderboard, and a Cena mode.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.donorfx.DonorFxClient"]
+  },
+  "mixins": ["donorfx.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
