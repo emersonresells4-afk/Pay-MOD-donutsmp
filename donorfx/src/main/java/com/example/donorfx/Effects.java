@@ -4,7 +4,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 
 import java.util.ArrayList;
@@ -84,12 +83,14 @@ public final class Effects {
         active.add(new Fx(name, amount, tier));
 
         MinecraftClient mc = MinecraftClient.getInstance();
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F));
-        if (tier >= 2) {
-            mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST, 1.0F, 1.0F));
-        }
-        if (tier >= 4) {
-            mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.ENTITY_ENDER_DRAGON_GROWL, 1.0F, 1.0F));
+        if (mc.player != null) {
+            mc.player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+            if (tier >= 2) {
+                mc.player.playSound(SoundEvents.ENTITY_FIREWORK_ROCKET_BLAST, 1.0F, 1.0F);
+            }
+            if (tier >= 4) {
+                mc.player.playSound(SoundEvents.ENTITY_ENDER_DRAGON_GROWL, 1.0F, 1.0F);
+            }
         }
 
         int w = mc.getWindow().getScaledWidth();
